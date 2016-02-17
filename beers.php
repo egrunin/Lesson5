@@ -18,7 +18,8 @@
 
 <?php
 // connect
-$conn = new PDO('mysql:host=127.0.0.1;dbname=gcrfreeman', 'root', '');
+$conn = new PDO('mysql:host=sql.computerstudi.es;dbname=gc200310426', 'gc200310426', 'cAWivcDH');
+
 
 // prepare the query
 $sql = "SELECT * FROM beers ORDER BY name";
@@ -40,6 +41,7 @@ foreach($beers as $beer) {
         <td>' . $beer['domestic'] . '</td>
         <td>' . $beer['light'] . '</td>
         <td>' . $beer['price'] . '</td>
+		<td><a href="beer.php?beer_id=' . $beer['beer_id'] . '" title="Edit">Edit</a></td>
         <td><a href="delete-beer.php?beer_id=' . $beer['beer_id'] . '"
             title="Delete" class="confirmation">Delete</a></td>
         </tr>';

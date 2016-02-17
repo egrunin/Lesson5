@@ -4,9 +4,9 @@
 /* mail('rich@infrontofthenet.com', '1st Wed PHP Email',
     'Trying to send an email from a php page'); */
 
-mail('rich@infrontofthenet.com', '2nd Wed PHP Email',
+mail('jack.grunin@gmail.com', '2nd Wed PHP Email',
     'Trying to send an email from a php page',
-    'From:contact@georgiancollege.ca');
+    'From:rregtc@hotmail.com');
 
 echo 'Go check your inbox!';
 

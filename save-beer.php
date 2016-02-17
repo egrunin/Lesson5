@@ -51,7 +51,7 @@ if ((empty($price)) || (!is_numeric($price))
 if ($ok == true) {
 
     // connect to the db
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=gcrfreeman', 'root', '');
+    $conn = new PDO('mysql:host=sql.computerstudi.es;dbname=gc200310426', 'gc200310426', 'cAWivcDH');
 
     // set up the SQL command to save the data
     $sql = "INSERT INTO beers (name, alcohol_content, domestic, light, price)

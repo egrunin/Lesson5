@@ -6,7 +6,7 @@ $beer_id = $_GET['beer_id'];
 
 if (is_numeric($beer_id)) {
     // connect
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=gcrfreeman', 'root', '');
+    $conn = new PDO('mysql:host=sql.computerstudi.es;dbname=gc200310426', 'gc200310426', 'cAWivcDH');
 
     // prepare and execute the SQL DELETE command
     $sql = "DELETE FROM beers WHERE beer_id = :beer_id";
