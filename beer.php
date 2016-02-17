@@ -41,12 +41,10 @@ if (is_numeric($_GET['beer_id'])) {
 		if ($beer['domestic'] == true){
 			$domestic = "checked";
 		}
-		$domestic = $beer['domestic'];
 		
 		if ($beer['light'] == true){
 			$light = "checked";
 		}
-		$light = $beer['light'];
 		$price = $beer['price'];
 	}
 

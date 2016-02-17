@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <!DOCTYPE html>
     <html>
     <head>
@@ -54,8 +56,15 @@ if ($ok == true) {
     $conn = new PDO('mysql:host=sql.computerstudi.es;dbname=gc200310426', 'gc200310426', 'cAWivcDH');
 
     // set up the SQL command to save the data
-    $sql = "INSERT INTO beers (name, alcohol_content, domestic, light, price)
+	if(empty($beer_id)) {
+		$sql = "INSERT INTO beers (name, alcohol_content, domestic, light, price)
       VALUES (:name, :alcohol_content, :domestic, :light, :price)";
+	}
+	else {
+		$sql= "UPDATE beers SET name = :name, alcohol_content = :alcohol_content,
+		light = :light, domestic = :domestic, price = :price WHERE beer_id = :beer_id";
+	}
+
 
     // create a command object
     $cmd = $conn->prepare($sql);
@@ -66,6 +75,11 @@ if ($ok == true) {
     $cmd -> bindParam(':domestic', $domestic, PDO::PARAM_BOOL);
     $cmd -> bindParam(':light', $light, PDO::PARAM_BOOL);
     $cmd -> bindParam(':price', $price, PDO::PARAM_INT);
+	
+	// add the beer id if we have one for an update
+	if(!empty($beer_id)) {
+		$cmd -> bindParam(':beer_id', $beer_id, PDO::PARAM_INT);
+	}
 
     // execute the save
     $cmd -> execute();
@@ -73,9 +87,12 @@ if ($ok == true) {
     // disconnect
     $conn = null;
 
-    echo '<h1>Beer Saved</h1>
-        <a href="beers.php" title="View Beers">View Beer Listings</a>';
+    /*echo '<h1>Beer Saved</h1>
+        <a href="beers.php" title="View Beers">View Beer Listings</a>'; */
+		header('location:beers.php');
 }
 ?>
 </body>
 </html>
+
+<?php ob_flush(); ?>
